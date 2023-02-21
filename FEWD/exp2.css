@@ -158,3 +158,41 @@ footer {
     background-color:burlywood;
     padding: 20px;
 }
+
+#contact-me {
+    background-color: darkgrey;
+    color: black;
+    padding: 20px;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, cursive;
+    /* keep centre */
+    text-align: center;
+}
+
+#name {
+    /* increase width  */
+    width: 300px;
+    height: 30px;
+}
+
+#email {
+    /* increase width  */
+    width: 300px;
+    height: 30px;
+}
+
+#message {
+    /* increase width  */
+    width: 400px;
+    height: 100px;
+}
+
+/* submit button */
+#submit {
+    /* increase width  */
+    width: 200px;
+    height: 40px;
+    background-color: green;
+    color: black;
+    font-size: 20px;
+}
