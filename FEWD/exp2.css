@@ -1,0 +1,160 @@
+body {
+    padding: 50px;
+    border: 3px solid black;
+    margin: 50px;
+    /* change border type */
+    border-style: double;
+    background-color: wheat;
+}
+
+header {
+    background-color: brown;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #ffffff;
+    font-size: 30px;
+    text-align: center;
+}
+
+/* make the photo as a circle */
+img {
+    /* put the photo in centre */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    /* draw border */
+    border: 4px solid black;
+}
+
+/* change font of each h2 heading */
+h2 {
+    font-family: 'Lobster', cursive;
+}
+
+/* for table change color */
+table {
+    background-color: teal;
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    /* make contents of the table centred */
+    text-align: center;
+    /* increase font size */
+    font-size: 20px;
+    /* change font for each */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+/* change color of the table heading */
+th {
+    color: white;
+}
+
+/* change color of the table data */
+td {
+    color: yellow
+}
+
+/* change color of the footer */
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-style: italic;
+    padding: 20px;
+    font-size: 30px;
+}
+
+#projects {
+    background-color: cadetblue;
+    color: white;
+    font-style: italic;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#skills {
+    background-color: saddlebrown;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#achievements {
+    background-color: darkslategray;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#interests {
+    background-color: darkcyan;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#personal {
+    background-color: darkgrey;
+    color: black;
+    padding: 20px;
+    font-size: 22px;
+}
+
+#about-me {
+    background-color: darkgrey;
+    color: black;
+    padding: 20px;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, cursive;
+}
+
+#contact {
+    background-color: beige;
+    color: black;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.box-row {
+    display: flex;
+    /* draw border  */
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.box1 {
+    flex: 1;
+    background-color: darkgrey;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.box2 {
+    flex: 1;
+    background-color: darkcyan;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.details {
+    display: flex;
+}
+
+.box3 {
+    flex: 1;
+    padding:10px;
+}
+
+.box4 {
+    flex: 1;
+    padding: 10px;
+    margin-left: -700px;
+}
+
+.container {
+    background-color:burlywood;
+    padding: 20px;
+}
