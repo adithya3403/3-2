@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>My Portfolio</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+            rel="nofollow" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+            crossorigin="anonymous" rel="nofollow" />
+    </head>
+
+    <body style="background-color: #f2f2f2">
+        <header style="text-align: center">
+            <nav class="navbar navbar-expand-lg bg-light fixed-top">
+                <div class="container-fluid" style="padding: 5px; text-align: center">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation" style="text-align: center;">
+                        <span class="navbar-toggler-icon" style="text-align: center;"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="text-align: center;">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="text-align: center;">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about-me">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#education">Academics</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#skills">Technical Skills</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#container">Projects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#achievements">Achievements</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact-me">Contact me</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main style="background-color: beige; padding: 20px">
+            <div id="about-me" style="padding: 20px">
+                <br><br>
+                <img src="me.jpeg" alt="My Image" width="250" height="250" style="float: right; margin: 10px"
+                    class="img-fluid rounded-circle" />
+                <h2>Adithya K</h2>
+                <p>a.dty.3403@gmail.com</p>
+                <hr>
+                <br>
+                <h4>Career Objective</h4>
+                <p>Hi, my name is <b>Adithya Kramadhati</b> and I'm a Student.<br>
+                    I enjoy working on projects that challenge me and help me grow as a professional.
+                </p>
+            </div>
+            <br><br><br><br><br>    
+            <div id="education">
+                <br><br><br>
+                <h2>Academics</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Education</th>
+                                <th>CGPA</th>
+                                <th>Place of Study</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2020-2024</td>
+                                <td>B.Tech in Computer Science and Engineering</td>
+                                <td>9.3</td>
+                                <td>KMIT, Narayanguda, Hyd</td>
+                            </tr>
+                            <tr>
+                                <td>2018-2020</td>
+                                <td>Intermediate in MPC</td>
+                                <td>9.65</td>
+                                <td>Sri Chaitanya Jr Clg, Amberpet, Hyd</td>
+                            </tr>
+                            <tr>
+                                <td>2008-2018</td>
+                                <td>CBSE Class X</td>
+                                <td>9.2</td>
+                                <td>Sarathi School, Habsiguda, Hyd</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br><br><br>
+                <div id="skills">
+                    <br><br><br>
+                    <h2>TechSkills</h2>
+                    <ul>
+                        <li>
+                            <h4>Programming Languages</h4>
+                            <p>
+                            <ul>
+                                <li>C</li>
+                                <li>C++</li>
+                                <li>Java</li>
+                                <li>Python</li>
+                            </ul>
+                            </p>
+                        </li>
+                        <li>
+                            <h4>Databases</h4>
+                            <p>
+                            <ul>
+                                <li>MongoDB</li>
+                                <li>MySQL</li>
+                            </ul>
+                            </p>
+                        </li>
+                        <li>
+                            <h4>Web Development</h4>
+                            <p>
+                            <ul>
+                                <li>JavaScript</li>
+                                <li>HTML</li>
+                                <li>CSS</li>
+                                <li>React</li>
+                                <li>NodeJs</li>
+                                <li>JSON</li>
+                            </ul>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <br><br><br><br><br>
+                <div id="container">
+                    <br><br><br>
+                    <h2>Projects</h2>
+                    <div class="row" style="display: flex">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="card-title">Object detection and tracking</h5>
+                                        <p class="card-text">
+                                            <b>Description:</b><br>
+                                            Object tracking implemented with YOLOv4, DeepSort, and TensorFlow. YOLOv4 is
+                                            a state of the art algorithm that uses deep convolutional neural networks to
+                                            perform
+                                            object detections. We can take the output of YOLOv4 feed these object
+                                            detections into Deep SORT (Simple
+                                            Online and Realtime Tracking with a Deep Association Metric) in order to
+                                            create a highly accurate object tracker.
+                                            <br> <b>Technologies used:</b> Python, OpenCV, TensorFlow, YOLOv4, DeepSort
+                                            <br>
+                                            Link to the project:<br>
+                                            <a href="https://github.com/adityachintala/UAV-tracking-tank"
+                                                class="btn btn-primary">object detection and tracking</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="card-title">SpellBee word generator</h5>
+                                        <p class="card-text">
+                                            <b>Description:</b><br>
+                                            This project is helpful when we are given a bunch of letters and we need to
+                                            find all the possible words<br>
+                                            <b>Technologies used:</b>Python, Flask, HTML, CSS, JavaScript<br>
+                                            Link to the project:<br>
+                                            <a href="https://github.com/adithya3403/spelling_bee"
+                                                class="btn btn-primary">SpellBee</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div id="achievements">
+                <br><br><br>
+                <h2>Achievements</h2>
+                <ol>
+                    <li>NPTEL certificate in Introduction to Machine Learning</li>
+                    <li>Kaggle certificate in Python</li>
+                </ol>
+            </div>
+            <br><br><br><br><br>
+            <div id="contact-me">
+                <h2>Contact Me</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Name</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Message</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <footer style="padding: 20px">
+            <br><br><br>
+            <div id="above-copyright"
+                style="padding: 20px; background-color: tomato; text-align: center; display: flex; justify-content: space-around;">
+                <div id="location">
+                    Location
+                    <br><br>
+                    Telangana, India
+                </div>
+                <div id="around-the-web" style="text-align: center;">
+                    Around the web
+                    <br><br>
+                    <div style="display: flex">
+                        <div id="twitter">
+                            <a href="https://twitter.com/adithya3403">
+                                <img src="https://img.icons8.com/color/48/000000/twitter.png" alt="twitter"
+                                    style="margin-right: 10px; border-radius: 50%;" />
+                            </a>
+                        </div>
+                        <div id="github">
+                            <a href="github.com/adithya3403">
+                                <img src="https://img.icons8.com/fluent/48/000000/github.png" alt="github"
+                                    style="margin-right: 10px; border-radius: 50%;" />
+                            </a>
+                        </div>
+                        <div id="linkedin">
+                            <a href="https://www.linkedin.com/in/adithya-chintala-4b4b1b1b3/">
+                                <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="linkedin"
+                                    style="margin-right: 10px; border-radius: 50%;" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="about">
+                    About
+                    <br><br>
+                    This is a simple page
+                </div>
+            </div>
+            <div id="copyright" style="padding: 20px; background-color: brown; text-align: center">
+                <p>Copyright © 2023 Adithya</p>
+            </div>
+        </footer>
+    </body>
+
+</html>
