@@ -1,0 +1,178 @@
+body {
+    padding: 50px;
+    border: 3px solid black;
+    margin: 50px;
+    border-style: double;
+    background-color: wheat;
+}
+
+header {
+    background-color: brown;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #ffffff;
+    font-size: 30px;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    border: 4px solid black;
+    width: 350px;
+    height: 350px;
+}
+
+h2 {
+    font-family: 'Lobster', cursive;
+}
+
+table {
+    background-color: teal;
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+th {
+    color: white;
+}
+
+td {
+    color: yellow
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-style: italic;
+    padding: 20px;
+    font-size: 30px;
+}
+
+#skills {
+    background-color: saddlebrown;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#achievements {
+    background-color: darkslategray;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#interests {
+    background-color: darkcyan;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+}
+
+#personal {
+    background-color: darkgrey;
+    color: black;
+    padding: 20px;
+    font-size: 22px;
+}
+
+#about-me {
+    background-color: darkgrey;
+    color: black;
+    padding: 20px;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, cursive;
+}
+
+#contact {
+    background-color: beige;
+    color: black;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.box-row {
+    display: flex;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.box1 {
+    flex: 1;
+    background-color: darkgrey;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.box2 {
+    flex: 1;
+    background-color: darkcyan;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.details {
+    display: flex;
+}
+
+.box3 {
+    flex: 1;
+    padding: 10px;
+}
+
+.box4 {
+    flex: 1;
+    padding: 10px;
+    margin-left: -700px;
+}
+
+.container {
+    background-color: burlywood;
+    padding: 20px;
+}
+
+#contact-me {
+    background-color: darkgrey;
+    color: black;
+    padding: 20px;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, cursive;
+    text-align: center;
+}
+
+#name {
+    width: 300px;
+    height: 30px;
+}
+
+#email {
+    width: 300px;
+    height: 30px;
+}
+
+#message {
+    width: 400px;
+    height: 100px;
+}
+
+#submit {
+    width: 200px;
+    height: 40px;
+    background-color: green;
+    color: black;
+    font-size: 20px;
+}
+
+#portfolio {
+    text-align: center;
+    padding: 20px
+}
