@@ -37,20 +37,20 @@ class p1b {
         sc.close();
     }
 
-    static int shortestSubarray(int[] A, int K) {
-        int N = A.length;
-        long[] P = new long[N + 1];
-        for (int i = 0; i < N; ++i)
-            P[i + 1] = P[i] + (long) A[i];
-        int ans = N + 1;
+    static int shortestSubarray(int[] arr, int K) {
+        int n = arr.length;
+        long[] temp = new long[n + 1];
+        for (int i = 0; i < n; ++i)
+            temp[i + 1] = temp[i] + (long) arr[i];
+        int ans = n + 1;
         Deque<Integer> monoq = new LinkedList<>();
-        for (int y = 0; y < P.length; ++y) {
-            while (!monoq.isEmpty() && P[y] <= P[monoq.getLast()])
+        for (int i = 0; i < temp.length; ++i) {
+            while (!monoq.isEmpty() && temp[i] <= temp[monoq.getLast()])
                 monoq.removeLast();
-            while (!monoq.isEmpty() && P[y] >= P[monoq.getFirst()] + K)
-                ans = Math.min(ans, y - monoq.removeFirst());
-            monoq.addLast(y);
+            while (!monoq.isEmpty() && temp[i] >= temp[monoq.getFirst()] + K)
+                ans = Math.min(ans, i - monoq.removeFirst());
+            monoq.addLast(i);
         }
-        return ans < N + 1 ? ans : -1;
+        return ans < n + 1 ? ans : -1;
     }
 }
