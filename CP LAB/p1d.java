@@ -4,7 +4,7 @@ d) Write a JAVA Program to implement a segment tree with its operations
 In Hyderabad after a long pandemic gap, the Telangana Youth festival Is Organized at HITEX.
 In HITEX, there are a lot of programs planned. During the festival in order to maintain the rules 
 of Pandemic, they put a constraint that one person can only attend any one of the programs in 
-one day according to planned days. Now it‟s your aim to implement the "Solution" class in such 
+one day according to planned days. Now it"s your aim to implement the "Solution" class in such 
 a way that you need to return the maximum number of programs you can attend according to 
 given constraints.
 
