@@ -39,20 +39,21 @@ class p1a {
         sc.close();
     }
 
-    static int subarraysWithKDistinct(int[] A, int K) {
-        return atMostK(A, K) - atMostK(A, K - 1);
+    static int subarraysWithKDistinct(int[] arr, int K) {
+        return atMostK(arr, K) - atMostK(arr, K - 1);
     }
 
-    static int atMostK(int[] A, int K) {
-        int i = 0, res = 0;
-        Map<Integer, Integer> count = new HashMap<>();
-        for (int j = 0; j < A.length; ++j) {
-            if (count.getOrDefault(A[j], 0) == 0)
+    static int atMostK(int[] arr, int K) {
+        int res = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        int i = 0;
+        for (int j = 0; j < arr.length; ++j) {
+            if (map.getOrDefault(arr[j], 0) == 0)
                 K--;
-            count.put(A[j], count.getOrDefault(A[j], 0) + 1);
+            map.put(arr[j], map.getOrDefault(arr[j], 0) + 1);
             while (K < 0) {
-                count.put(A[i], count.get(A[i]) - 1);
-                if (count.get(A[i]) == 0)
+                map.put(arr[i], map.get(arr[i]) - 1);
+                if (map.get(arr[i]) == 0)
                     K++;
                 i++;
             }
