@@ -34,42 +34,6 @@ At most 3*10^4 calls will be made to update and sumRange
 
 import java.util.*;
 
-class NumArray {
-    int[] nums;
-    int[] BIT;
-    int n;
-
-    public NumArray(int[] nums) {
-        this.nums = nums;
-        n = nums.length;
-        BIT = new int[n + 1];
-        for (int i = 0; i < n; i++)
-            init(i, nums[i]);
-    }
-
-    public void init(int i, int val) {
-        i++;
-        while (i <= n) {
-            BIT[i] += val;
-            i += (i & -i);
-        }
-    }
-
-    public int getSum(int i) {
-        int sum = 0;
-        i++;
-        while (i > 0) {
-            sum += BIT[i];
-            i -= (i & -i);
-        }
-        return sum;
-    }
-
-    public int sumRange(int i, int j) {
-        return getSum(j) - getSum(i - 1);
-    }
-}
-
 public class p1c {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -78,10 +42,36 @@ public class p1c {
         for (int i = 0; i < n; i++) {
             nums[i] = sc.nextInt();
         }
-        NumArray na = new NumArray(nums);
         int s1 = sc.nextInt();
         int s2 = sc.nextInt();
-        System.out.println(na.sumRange(s1, s2));
+        System.out.println(sumRange(nums, s1, s2));
         sc.close();
+    }
+
+    static int sumRange(int[] arr, int s1, int s2) {
+        int n = arr.length;
+        int[] temp = new int[n + 1];
+        for (int i = 0; i < n; i++) {
+            update(temp, i, arr[i]);
+        }
+        return getSum(temp, s2) - getSum(temp, s1 - 1);
+    }
+
+    static void update(int[] temp, int i, int val) {
+        i++;
+        while (i < temp.length) {
+            temp[i] += val;
+            i += i & (-i);
+        }
+    }
+
+    static int getSum(int[] temp, int i) {
+        i++;
+        int sum = 0;
+        while (i > 0) {
+            sum += temp[i];
+            i -= i & (-i);
+        }
+        return sum;
     }
 }
