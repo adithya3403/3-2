@@ -1,0 +1,33 @@
+.jumbotron {
+    position: relative;
+    height: 600px;
+    background-image: url('image.webp');
+    background-size: contain;
+    background-position: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+}
+
+.jumbotron::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.jumbotron .container {
+    position: relative;
+    z-index: 1;
+}
+
