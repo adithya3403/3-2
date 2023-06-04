@@ -1,0 +1,22 @@
+Create your First AWS S3 Bucket and Upload Content to Bucket and Manage their Access and Create Static Website using AWS S3
+
+1. go to https://aws.amazon.com, sign in using root user email and password
+2. in the console home or dashboard, in the search bar at the top type "S3"
+3. click on "Create bucket"
+4. under "bucket name", give a unique name to your bucket, for example: awsbucket05062023
+5. under "object ownership", select "ACLs enabled"
+6. under "block public access", uncheck "block all public access" option and check "I acknowledge ..." option
+7. scroll down and click on create bucket, your bucket will be created
+8. click on the bucket name, and go to "Permissions" tab
+9. scroll down until you see "Access control list(ACL)" and click on "Edit" button 
+10. for "Everone(public access)", select "List" and "Read" options
+    scroll down and click the button "I understand..." and click "Save changes"
+11. now go to "Objects" tab, click on "Upload" button
+12. click on "Add files" button, select any photo from your computer and click "Upload" button
+13. you should see upload succeeded, click on "Close" button
+14. now click on your image and go to "Permissions" tab
+15. edit "ACL" and again select "Read" and "Read" for "Everyone(public access)"
+16. scroll down, select "I understand..." and click "Save changes"
+17. now in the properties tab, copy the object URL
+18. open a new tab and paste it, you should see the image that you uploaded
+
