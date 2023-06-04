@@ -8,19 +8,17 @@ Create and configure storage services and upload files and objects using Amazon 
 4. create a new keypair called "nfs" and store it as RSA .pem format
 5. under "firewall", choose "create security group"
     check all three traffics (ssh, http, https)
-    then, scroll a bit up, in "network settings" field, click on "edit"
-    choose "subnet" with zone as "ap-northeast-1a"
 6. let the storage be 10gb and click "Launch instance"
     successfully created an instance called "efs1"
 7. create another instance, name it "efs2" and "Amazon linux" as OS image
-8. now create another instance called "efs2" but with subnet as "ap-northeast-1c"
+8. now create another instance called "efs2"
 9. name it "efs2", select same keypair "nfs"
 10. click on "select existing security group" and choose the security group of "efs1" instance
-    open EC2 dashboard in a new tab and check the security group name
+    to choose the same security group, open EC2 dashboard in a new tab and check the security group name
+11. also check the availability zone, if it is "ap-northeast-1c", in the "edit" field click on "subnet"
+    and choose some other availability zone, like "ap-northeast-1d" in my case
+    * DO NOT CHOOSE THE SAME ZONE, CHOOSE A DIFFERENT ZONE *
     make sure you select the same launch-wizard for both the instances, in my case "launch-wizard-20" for both
-11. scroll a bit up, click on "edit" in "network settings" field
-    the availability zone for the first instance was "ap-northeast-1a"
-    so for this instance let us select "ap-northeast-1c"
 12. change the storage to 10gb and click on "Launch instance"
 13. now make sure that both have different availability zones, but the same security group (launch-wizard)
 14. now in the left side panel, scroll to "Network and security", select "Security groups"
