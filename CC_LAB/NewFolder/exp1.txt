@@ -1,0 +1,27 @@
+Establish an AWS account. Use the AWS Management Consoleto launch an EC2 instance and connect to it.
+
+1. go to https://aws.amazon.com, sign in using root user email and password
+2. in the console home or dashboard, in the search bar at the top type "EC2"
+3. click on the EC2 service
+4. select first option "instances" in left side panel under "instances"
+5. click on "launch instances" orange button 
+6. under "name and tags", enter the name of your instance, for example "my-first-instance"
+7. under "application and os images", select "Amazon Linux" (free tier eligible)
+8. under "instance type", select "t2.micro" (free tier eligible)
+9. under "key pair(login)" select any existing keypair from the dropdown
+    if no keypair exists, create a new keypair by clicking on "create a new key pair"
+    enter a name for the keypair, for example "my-first-keypair"
+    select RSA as the type and .pem as the format
+    click on "Create key pair" button, it will download the keypair file to your computer
+10. under "Network settings", under "Firewall" select "Select existing security group"
+    if you do not have any, click on "create a new security group"
+11. under "configuration storage", instead of "8" give "10" gb storage
+12. click on "launch instance" button at the bottom right
+13. you must see a message "Success! successfully initialised launch of instance"
+14. scroll down and click on "view all instances" button
+15. you must see your instance in the list, with status "running"
+16. now right click it and select "connect"
+17. under "EC2 instance connect", copy the public ip address and remember your username
+18. click on "connect"
+19. it opens a new tab with your instance running
+20. you are ready to use it now
