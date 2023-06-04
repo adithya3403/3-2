@@ -4,7 +4,7 @@
 
 2. [Create your first AWS S3 bucket and upload content to bucket and manage their access and create static website using AWS S3](NewFolder/exp2.txt)
 
-3. Create and configure storage services and upload files and objects using Amazon EBS
+3. [Create and configure storage services and upload files and objects using Amazon EBS](NewFolder/exp3.txt)
 
 4. Create and configure storage services and upload files and objects using Amazon EFS
 
