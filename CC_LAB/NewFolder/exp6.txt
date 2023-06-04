@@ -1,0 +1,40 @@
+Creation of S3 bucket and trigger by lambda to dynamoDB
+
+1. go to https://aws.amazon.com, sign in using root user email and password
+2. in the console home or dashboard, in the search bar at the top type "IAM" and click on it
+3. in the left panel under "access management", select "roles" and click on "Create role" button
+4. select "AWS service" and then "Lambda" and click on "Next" button
+5. in "Permissions policies", search for "DynamoDB" in the search bar
+6. select "AmazonDynamoDBFullAccess" and click on "Next" button
+7. give a rolename: "lambda_dynamodb" and scroll down and click on "Create role" button
+8. now go to console home/dashboard and search for "Lambda" and open the service
+9. click on "Create function" button
+10. select "Author from scratch" and give a function name: "lambda_dynamodb"
+11. runtime "python3.7" and in "change default execution role", select "Use an existing role"
+12. select "lambda_dynamodb" from the dropdown and click on "Create function" button
+13. copy the below code and paste it in the lambda function editor
+        import json
+        import boto3
+        def lambda_handler(event,context):
+            client = boto3.client("rekognition")
+            s3=boto3.client("s3")
+            fileObj = s3.get_object(Bucket = "bucketrekcse3", Key="myimage.jpeg")
+            file_content=fileObj["Body"].read()
+            response = client.detect_labels(Image= {"S3Object": {"Bucket": "bucketrekcse3", "Name":"myimage.jpeg"}},MaxLabels=5,MinConfidence=70)
+            print(response)
+            return {
+                'response': response,
+                'statusCode':200,
+                'body':json.dumps('Hello from Lambda')
+            }
+14. now click on "deploy"
+15. next, go to console home/dashboard and search for "S3" and open the service
+16. click on "Create bucket" button, give bucket name as "lambdadynamodbs3bucket" 
+17. "enable ACLs" and uncheck "block all public access" and click on "Create bucket" button
+18. now go to console home/dashboard and search for "DynamoDB" and open the service
+19. click on "Create table" button, give table name as "newtable"
+20. primary key as "unique" and scroll donw and click on "Create table" button
+21. now go back to lambda function and under "function overview", click on "Add trigger" button
+22. select "S3" from the dropdown and select the bucket name "lambdadynamodbs3bucket" and click on "Add" button
+23. now go to S3 service and click on "lambdadynamodbs3bucket" and click on "Upload" button
+24. upload a file 
