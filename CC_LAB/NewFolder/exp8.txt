@@ -1,0 +1,32 @@
+Creation of S3 bucket and make it available with Cloud Front
+
+1. go to https://aws.amazon.com, sign in using root user email and password
+2. in the console home or dashboard, in the search bar at the top type "S3"
+3. click on "Create bucket"
+4. under "bucket name", give a unique name to your bucket, for example: awsbucket_05062023
+5. under "block public access", uncheck "block all public access" option
+6. check "I acknowledge ..." option
+7. scroll down and click on create bucket, your bucket will be created
+8. click on the bucket name, and go to "Properties" tab
+9. scroll down until you see "Static website hosting" and click on "Edit" button 
+10. select "enabled" and under "Index document", give name of the file as "index.html"
+11. click on "Save changes"
+12. now go to "Objects" tab in you bucket and click on "Upload" button
+13. create a simple html file, name it index.html and upload it to your bucket
+    for example: content of the index.html:
+        <html>
+            <body>
+                <h1>Hello world</h1>
+            </body>
+        </html>
+14. click on "Upload" button
+15. now go to console home or dashboard and search for "CloudFront"
+16. click on "Create distribution"
+17. under "origin domain", select your bucket name and check "use website endpoint" option
+18. scroll down and click "Create distribution", select "enable security" and click on "Create distribution"
+19. copy the "distribution domain name" and paste it a new tab
+    you should see your html file rendered
+    if it doesnt open, it might still be under deployment, wait for it till it gets deployed
+
+hint: incase it doesnt work, change the settings in your bucket
+    enable ACLs, list read and all those settings as in NewFolder/exp2.txt
