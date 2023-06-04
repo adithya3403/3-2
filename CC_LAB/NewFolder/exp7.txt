@@ -1,0 +1,28 @@
+Pull the image from Docker to EC2 Instance and access it publicly.
+
+1. go to https://aws.amazon.com, sign in using root user email and password
+2. in the console home or dashboard, in the search bar at the top type "EC2"
+3. click on the EC2 service
+4. in the left side panel, click "instances" under instances
+5. you should see your instances here, select any instance
+    make sure your imstance image is "ubuntu"
+    if not, create a new instance with all the default settings and the OS image as "Ubuntu"
+6. right click on it and select "connect", remember or copy your "public ip address"
+7. in the console of EC2 instance, type the following commands to pull image:
+    sudo su
+    apt update (OR) apt-get update
+    apt install docker.io (OR) apt-get install docker.io
+    docker version
+    docker image ls (this shows the list of images present in our instance)
+8. we do not have any images because we didnt pull the image from docker
+9. type the following commands:
+    docker pull scott2srikanth/fileshare_docker-fdp
+    docker image ls
+    docker run -d -p 3000:3000 scott2srikanth/fsdreactdemo
+note: 3000:3000
+    first 3000 is inbound values, we can change it
+    second 3000 is docker bound values, do not change it
+    for example: you can give 3008:3000
+10. go to your browser and type the public ip of your instance with port number 3000
+    public ip is visible in the EC2 console
+    http://18.205.24.199:3000 (3000 or 3008 depending on the left side value)
