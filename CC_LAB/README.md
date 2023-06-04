@@ -18,4 +18,4 @@
 
 9. [Creation of DynamoDB](NewFolder/exp9.txt)
 
-10. [Create image recognition capability application using AWS Amazon Recognition]
+10. Create image recognition capability application using AWS Amazon Recognition
