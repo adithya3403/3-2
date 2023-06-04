@@ -13,20 +13,23 @@ Creation of S3 bucket and trigger by lambda to dynamoDB
 11. runtime "python3.7" and in "change default execution role", select "Use an existing role"
 12. select "lambda_dynamodb" from the dropdown and click on "Create function" button
 13. copy the below code and paste it in the lambda function editor
-        import json
         import boto3
-        def lambda_handler(event,context):
-            client = boto3.client("rekognition")
-            s3=boto3.client("s3")
-            fileObj = s3.get_object(Bucket = "bucketrekcse3", Key="myimage.jpeg")
-            file_content=fileObj["Body"].read()
-            response = client.detect_labels(Image= {"S3Object": {"Bucket": "bucketrekcse3", "Name":"myimage.jpeg"}},MaxLabels=5,MinConfidence=70)
-            print(response)
-            return {
-                'response': response,
-                'statusCode':200,
-                'body':json.dumps('Hello from Lambda')
-            }
+        from uuid import uuid4
+        def lambda_handler(event, context):
+            s3 = boto3.client("s3")
+            dynamodb = boto3.resource('dynamodb')
+            for record in event['Records']:
+            bucket_name = record['s3']['bucket']['name']
+            object_key = record['s3']['object']['key']
+            size = record['s3']['object'].get('size', -1)
+            event_name = record ['eventName']
+            event_time = record['eventTime']
+            dynamoTable = dynamodb.Table('newtable')
+            dynamoTable.put_item(
+                Item={'unique': str(uuid4()), 'Bucket': bucket_name, 'Object': object_key,'Size': size,
+                'Event': event_name, 'EventTime': event_time})
+    in test: create a new event called e1
+    and give event JSON as : {"Records":{}} ans click on "Save"
 14. now click on "deploy"
 15. next, go to console home/dashboard and search for "S3" and open the service
 16. click on "Create bucket" button, give bucket name as "lambdadynamodbs3bucket" 
@@ -42,3 +45,4 @@ Creation of S3 bucket and trigger by lambda to dynamoDB
 26. you should see that the file uploaded in S3 bucket is now visible in DynamoDB table
 
 hint: if this isnt working, give table name and image name as in the code and try again
+    or add permissions to make the bucket "public"
