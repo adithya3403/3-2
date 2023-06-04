@@ -6,11 +6,11 @@
 
 3. [Create and configure storage services and upload files and objects using Amazon EBS](NewFolder/exp3.txt)
 
-4. Create and configure storage services and upload files and objects using Amazon EFS
+4. [Create and configure storage services and upload files and objects using Amazon EFS](NewFolder/exp4.txt)
 
 5. [Creation of Amazon Lex Chatbot](NewFolder/exp5.txt)
 
-6. [Creation of S3 bucket and trigger by lambda to dynamoDB](Newfolder/exp6.txt)
+6. [Creation of S3 bucket and trigger by lambda to dynamoDB](NewFolder/exp6.txt)
 
 7. [Pull the image from Docker to EC2 Instance and access it publicly](NewFolder/exp7.txt)
 
