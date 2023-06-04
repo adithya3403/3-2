@@ -10,12 +10,12 @@
 
 5. Create Home, AboutUs, Products, Partners, Contact Us pages for a static e-commerce website using Bootstrap. Add a gallery page using Bootstrap grid model. Add Navbar, header and footer to all pages. Add a Login link (Modal).
 
-6. Add a weather component to the home page of the above website, using ReactJS. 
+6. Increment and decrement counter, Day to morning and night.
 
-7. Update the 'contact us' page to a ReactJS component. An email should be sent each time contact us form is submitted.
+7. Add data into academic records
 
-8. Add a Login component using ReactJS. User should be able to login, using pre-defined logins. Session should be maintained using react hooks
+8. Add two numbers and display their sum
 
-9. Each page in the site should be a React JS component and the elements in each page should be child components.
+9. Home, Contact us and About pages
 
-10. React Routing should be used to take care of routing from browser location bar and also from Navbar
+10. Fetch and display data from API
