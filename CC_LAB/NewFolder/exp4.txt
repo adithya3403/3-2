@@ -1,0 +1,59 @@
+Create and configure storage services and upload files and objects using Amazon EFS
+
+* set region to Tokyo and follow below steps *
+
+1. go to https://aws.amazon.com, sign in using root user email and password
+2. in the console home or dashboard, in the search bar at the top type "EC2" and open the service
+3. create an instance, name it "efs1" and "Amazon linux" as OS image
+4. create a new keypair called "nfs" and store it as RSA .pem format
+5. under "firewall", choose "create security group"
+    check all three traffics (ssh, http, https)
+    then, scroll a bit up, in "network settings" field, click on "edit"
+    choose "subnet" with zone as "ap-northeast-1a"
+6. let the storage be 10gb and click "Launch instance"
+    successfully created an instance called "efs1"
+7. create another instance, name it "efs2" and "Amazon linux" as OS image
+8. now create another instance called "efs2" but with subnet as "ap-northeast-1c"
+9. name it "efs2", select same keypair "nfs"
+10. click on "select existing security group" and choose the security group of "efs1" instance
+    open EC2 dashboard in a new tab and check the security group name
+    make sure you select the same launch-wizard for both the instances, in my case "launch-wizard-20" for both
+11. scroll a bit up, click on "edit" in "network settings" field
+    the availability zone for the first instance was "ap-northeast-1a"
+    so for this instance let us select "ap-northeast-1c"
+12. change the storage to 10gb and click on "Launch instance"
+13. now make sure that both have different availability zones, but the same security group (launch-wizard)
+14. now in the left side panel, scroll to "Network and security", select "Security groups"
+15. click on the "security group id" link of your security group, mine "launch-wizard-20"
+16. go to "inbound rules" section and click on "edit inbound rules"
+17. click on "add rule" and do the following: NFS and source: anywhere ipv4, click on "save rules"
+18. now go to console home/dashboard adn search for "efs" and open the service
+19. click on "create file system" and give name: "efsdemo" and click on "customize"
+20. scroll down and click next, you will come to "Network access" page
+21. MOST IMPORTANT STEP :
+    click on the cross button for those 3 security groups, DO NOT CLICK ON REMOVE
+    now open EC2 dashboard in another tab, and copy the actual security group code of your securtiy group
+    like: sg-0e0e0e0e0e0e0e0e0 and paste them three times in the "security groups" field
+    then click next
+22. in "file system policy" page, click on next
+    in "review and create" page, scroll down and click on "create"
+23. we successfully created a file system called "efsdemo"
+24. now get back to EC2 dashboard and click on "instances" in the left side panel
+25. now connect to both the instances in 2 new tabs, you should be able to differentiate them so be careful
+26. type the command in both the instances:
+    sudo su
+    mkdir efs
+    yum install -y amazon-efs-utils
+27. now go back to "efs" page and click on "efsdemo"
+28. at the top right, click on "attach" and copy the second command: "using the NFs client" command
+29. go back to both the instances and paste the command
+30. now type the comamnds in both the instances:
+    ls
+    cd efs
+31. now carefully, create a file in efs1 instance only using command: touch efs1.txt
+    DO THIS IN efs1 INSTANCE
+32. now go back to efs2 instance in other tab, and type: ls
+    you will see that the file "efs1.txt" is also present in efs2 instance
+33. type command ls in both the instances, you must see 2 files in both the instances
+34. do not forget to terminate the instances and delete the file system after the lab
+
