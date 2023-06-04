@@ -1,0 +1,17 @@
+Create and configure storage services and upload files and objects using Amazon EBS
+
+* initially keep region as Tokyo and start doing below steps *
+
+1. go to https://aws.amazon.com, sign in using root user email and password
+2. in the console home or dashboard, in the search bar at the top type "EC2" and open the service
+3. create an instance, name it "inst1" and "ubuntu" as OS image
+4. create a new keypair called "inst1-keypair" and store it as RSA .pem format
+5. storage be 8gb and click "Launch instance"
+6. in the left side panel, scroll down until you see "Elastic Block Store" and click "Volumes"
+7. click "Create Volume", set size to 2gb, availability zone: ap-northeast-1c and click "Create Volume"
+8. now you will come back to volumes, right click on the volume you just created and click "Attach Volume"
+9. in the instance field, select "inst1" and click "Attach volume"
+10. now go back to EC2 dashboard, select "inst1", below you can see insntance details
+11. go to "Storage" tab, now you can see the 2gb volume attached to the instance
+12. do not forget to remove the 2 volumes and delete the instance after you finish the experiment
+    note: not doing so might cost you money
