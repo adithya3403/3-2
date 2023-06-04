@@ -41,3 +41,4 @@ Creation of S3 bucket and trigger by lambda to dynamoDB
 25. now go to DynamoDB service and click on "newtable" and click on "Explore table items" button
 26. you should see that the file uploaded in S3 bucket is now visible in DynamoDB table
 
+hint: if this isnt working, give table name and image name as in the code and try again
