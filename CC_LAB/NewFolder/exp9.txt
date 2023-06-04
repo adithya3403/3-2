@@ -1,0 +1,18 @@
+Creation of DynamoDB
+
+1. go to https://aws.amazon.com, sign in using root user email and password
+2. in the console home or dashboard, in the search bar at the top type "DynamoDB"
+3. click on the DynamoDB service
+4. click on "Create Table"
+5. enter the table name as "Movies"
+6. enter partition key as "id" and sort key as "title", select appropriate data types
+7. scroll down and click on "Create table"
+8. once the table is created, click on the table name "Movies"
+9. at top right, click on "explore table items"
+10. scroll down and in "items returned" selction, click on "create item"
+11. give id as "1" and title as "The Big New Movie", click on "save"
+12. if you want to create a new column, click on "add new attribute" and select data type
+    lets choose Number and name fo the column as year
+    enter: id=2, title="The Big New Movie", year=2015 and click on "Create item"
+13. in this way, you can create more items and even edit and delete them
+14. do not forget to delete the table once you are done with it
