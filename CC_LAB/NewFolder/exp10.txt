@@ -1,0 +1,76 @@
+Create image recognition capability application using AWS Amazon Recognition
+
+1. go to https://aws.amazon.com, sign in using root user email and password
+2. in the console home or dashboard, in the search bar at the top type "IAM" and click on it
+3. in the left panel under "access management", select "roles" and click on "Create role" button
+4. select "AWS service" and then "Lambda" and click on "Next" button
+5. in "Permissions policies", select the following policy names:
+    AWSLambdaExecute    AmazonRekognitionFullAccess     AmazonS3FullAccess
+6. click on "Next" button and give a role name, say "sample"
+7. now go to console home/dashboard and in the search bar at the top type "S3" and click on it
+8. click on "Create bucket" button and give a bucket name, say "csee1"
+9. under "object ownership" select "ACLs enabled"
+10. uncheck "block public access" settings for this bucket
+11. check the button "I acknowledge..." and click on "Create bucket" button
+12. now go to "permissions" tab in the bucket, edit "ACLs"
+    select "List" and "Read" for "Everyone(public access)" and click on "Save changes" button
+13. go to "Objects" tab and upload some random image and click on "Upload" button
+14. now go to console home/dashboard and in the search bar at the top type "Lambda" and click on it
+15. click on "Create function" button and select "Author from scratch"
+16. give a function name, say "exp10rekognition" and select "Python 3.8" as runtime
+17. in "Permissions" section, select "Use an existing role"
+    select the role name "sample" and click on "Create function" button
+18. paste this code:
+
+    import json
+    import boto3
+    def lambda_handler(event, context) :
+        client = boto3.client('rekognition')
+        s3=boto3. client ("s3")
+        fileObj=s3.get_object(Bucket="exp10rekognition", Key="1132062.jpg")
+        file_content=fileObj["Body"].read()
+        response = client.detect_labels(Image={
+            "S3Object": {
+                "Bucket": "exp10rekognition",
+                "Name": "1132062.jpg",
+            }}, MaxLabels=10)
+        print(response)
+        return {
+            'response': response,
+            'statusCode': 200,
+            'body': json.dumps('Hello from Lambda!')
+        }
+
+19. click on "Deploy" button and then click on "Test" button
+20. give event name as "event1" and paste this in JSON event:
+        {
+            "reponse": {
+                "Labels": [
+                    {
+                        "Name": "White Board",
+                        "confidence": 98.66819763183594,
+                        "Instances": [
+                            {
+                                "BoundingBox": {
+                                    "Width": 0.9999999403953552,
+                                    "Height": 0.9999999403953552,
+                                    "Left": 0.0,
+                                    "Top": 0.0
+                                },
+                                "Confidence": 98.66819763183594
+                            }
+                        ],
+                        "Parents": [],
+                        "Aliases": [],
+                        "Categories": [
+                            {
+                                "Name": "Offices and workspaces"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+21. now click on "Save" and test the function
+22. you should see details about the image in the "Execution results" section
+23. do not forget to delete the function and bucket after the experiment
