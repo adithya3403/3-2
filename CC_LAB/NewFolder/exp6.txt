@@ -37,4 +37,7 @@ Creation of S3 bucket and trigger by lambda to dynamoDB
 21. now go back to lambda function and under "function overview", click on "Add trigger" button
 22. select "S3" from the dropdown and select the bucket name "lambdadynamodbs3bucket" and click on "Add" button
 23. now go to S3 service and click on "lambdadynamodbs3bucket" and click on "Upload" button
-24. upload a file 
+24. upload a file and click on "Upload" button
+25. now go to DynamoDB service and click on "newtable" and click on "Explore table items" button
+26. you should see that the file uploaded in S3 bucket is now visible in DynamoDB table
+
