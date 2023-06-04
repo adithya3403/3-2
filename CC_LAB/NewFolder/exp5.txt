@@ -1,0 +1,33 @@
+Creation of Amazon Lex Chatbot
+
+1. go to https://aws.amazon.com, sign in using root user email and password
+2. in the console home or dashboard, in the search bar at the top type "Amazon Lex"
+3. click on the "Amaxon Lex" service
+4. in the left side panel, click on "Bots" and click "Create bot"
+5. select "Crseate blank bot"
+6. give the bot a name, for example: "BookingHotel"
+7. under IAM permissions, select "use an existing role" and select your role from the dropdown
+8. under "children's online privacy" select "No"
+9. let the language be "English(US)"
+10. under "voice iteration", select "none. this is only a text based application" and click on "Done"
+11. you should see "successfully created bot: BookingHotel" message
+12. now under "Intent details", give a new intent name, for example: "BookHotel"
+13. scroll down until you see "Sample utterances"
+14. click "add utterances" and type "I want to book a hotel"
+    add multiple other statements like "Can you book me a hotel?", "Please book me a hotel", etc.
+15. now scroll down to "Slots" and click on "add slot"
+16. give slot name "Location" and under slot type, select "AMAZON.City" from the dropdown
+17. give prompt as "Where do you want to stay?" and click on "Add slot"
+18. now you can also give sample utterances like "I want to book a hotel in {Location}", "I want to stay in {Location}", etc.
+19. now scroll down to "Fulfillment" and under "on successful fulfillment", give your custom message
+20. for example: "Your hotel is booked in {Location}"
+21. scroll down and click on "Save Intent"
+22. now click on "Build" button on the top right corner
+23. you should see "Build successful" message
+24. now click on "Test" button on the top right corner
+25. a new chatbot window will open to your right
+26. type "I want to book a hotel" and press enter
+27. it will ask you "Where do you want to stay?"
+28. type "Delhi" and press enter
+29. it will give you the message "booked successfully !"
+30. now you can modify the bot as per your requirements, build and test it again
