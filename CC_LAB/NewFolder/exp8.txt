@@ -23,8 +23,8 @@ Creation of S3 bucket and make it available with Cloud Front
 15. now go to console home or dashboard and search for "CloudFront"
 16. click on "Create distribution"
 17. under "origin domain", select your bucket name and check "use website endpoint" option
-18. scroll down and click "Create distribution", select "enable security" and click on "Create distribution"
-19. copy the "distribution domain name" and paste it a new tab
+18. scroll down and click "Create distribution", select "disbale security" and click on "Create distribution"
+19. copy the "distribution domain name" and paste it in a new tab
     you should see your html file rendered
     if it doesnt open, it might still be under deployment, wait for it till it gets deployed
 
