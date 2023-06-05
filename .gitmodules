@@ -4,3 +4,6 @@
 [submodule "FEWD/exp8"]
 	path = FEWD/exp8
 	url = https://github.com/adithya3403/exp8
+[submodule "FEWD/exp9"]
+	path = FEWD/exp9
+	url = https://github.com/adithya3403/exp9
