@@ -26,25 +26,18 @@ import java.util.*;
 
 public class p1a {
     static int subarraysWithKDistinct(int[] A, int K) {
-        return atMostK(A, K) - atMostK(A, K - 1);
-    }
-
-    static int atMostK(int[] A, int K) {
-        int i = 0, res = 0;
-        Map<Integer, Integer> count = new HashMap<>();
-        for (int j = 0; j < A.length; ++j) {
-            if (count.getOrDefault(A[j], 0) == 0)
-                K--;
-            count.put(A[j], count.getOrDefault(A[j], 0) + 1);
-            while (K < 0) {
-                count.put(A[i], count.get(A[i]) - 1);
-                if (count.get(A[i]) == 0)
-                    K++;
-                i++;
+        int n = A.length, ans = 0;
+        for (int i = 0; i < n; i++) {
+            Set<Integer> set = new HashSet<>();
+            for (int j = i; j < n; j++) {
+                set.add(A[j]);
+                if (set.size() == K)
+                    ans++;
+                else if (set.size() > K)
+                    break;
             }
-            res += j - i + 1;
         }
-        return res;
+        return ans;
     }
 
     public static void main(String[] args) {
