@@ -15,22 +15,22 @@
 
 import java.util.*;
 
-class PermutationPalindrome {
-    public boolean canPermutePalindrome(String s) {
-        Integer bitMask = 0;
-        for (int i = 0; i < s.length(); i++)
-            bitMask ^= 1 << (s.charAt(i) - 'a' + 1);
-        return Integer.bitCount(bitMask) <= 1;
-    }
-}
-
-
 public class p1h {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         String str = sc.next();
-        PermutationPalindrome pp = new PermutationPalindrome();
-        System.out.println(pp.canPermutePalindrome(str));
+        System.out.println(canPermutePalindrome(str));
         sc.close();
+    }
+
+    public static boolean canPermutePalindrome(String s) {
+        int[] count = new int[26];
+        for (char c : s.toCharArray())
+            count[c - 'a']++;
+        int odd = 0;
+        for (int cnt : count)
+            if (cnt % 2 == 1)
+                odd++;
+        return odd <= 1;
     }
 }
