@@ -52,12 +52,8 @@ public class p1i {
                 cur = cur.children[text.charAt(j) - 'a'];
                 if (cur == null)
                     break;
-                if (cur.isEnd) {
-                    List<Integer> pair = new ArrayList<>();
-                    pair.add(i);
-                    pair.add(j);
-                    res.add(pair);
-                }
+                if (cur.isEnd)
+                    res.add(Arrays.asList(i, j));
             }
         }
         return res;
