@@ -25,20 +25,15 @@ import java.util.*;
 
 public class p1b {
     public static int shortestSubarray(int[] A, int K) {
-        int N = A.length;
-        long[] P = new long[N + 1];
-        for (int i = 0; i < N; ++i)
-            P[i + 1] = P[i] + (long) A[i];
-        int ans = N + 1;
-        Deque<Integer> monoq = new LinkedList<>();
-        for (int y = 0; y < P.length; ++y) {
-            while (!monoq.isEmpty() && P[y] <= P[monoq.getLast()])
-                monoq.removeLast();
-            while (!monoq.isEmpty() && P[y] >= P[monoq.getFirst()] + K)
-                ans = Math.min(ans, y - monoq.removeFirst());
-            monoq.addLast(y);
+        int sum = 0, start = 0, smallest = Integer.MAX_VALUE;
+        for (int i = 0; i < A.length; i++) {
+            sum += A[i];
+            while (sum >= K) {
+                smallest = Math.min(smallest, i - start + 1);
+                sum -= A[start++];
+            }
         }
-        return ans < N + 1 ? ans : -1;
+        return smallest == Integer.MAX_VALUE ? -1 : smallest;
     }
 
     public static void main(String[] args) {
