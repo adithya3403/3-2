@@ -1,23 +1,18 @@
+// e. Write a JAVA Program to implement TREAP with its operations
+// Given an integer array nums, return the number of reverse pairs in the array.
+// A reverse pair is a pair (i,j) where 0<=i<j<nums.length and nums[i]>2*nums[j].
 
-/*
+// Example 1:
+// Input: nums=[1,3,2,3,1]
+// Output: 2
 
-e) Write a JAVA Program to implement TREAP with its operations
-Given an integer array nums, return the number of reverse pairs in the array.
-A reverse pair is a pair (i,j) where 0<=i<j<nums.length and nums[i]>2*nums[j].
+// Example 2:
+// Input: nums=[2,4,3,5,1]
+// Output:3
 
-Example 1:
-Input: nums=[1,3,2,3,1]
-Output: 2
-
-Example 2:
-Input: nums=[2,4,3,5,1]
-Output:3
-
-Constraints:
-1<=nums.length<=5*104
--2^31<=nums[i]<=2^31–1
-
-*/
+// Constraints:
+// 1<=nums.length<=5*104
+// -2^31<=nums[i]<=2^31–1
 
 import java.util.*;
 
@@ -30,6 +25,7 @@ class Pair<U, V> {
         right = _right;
     }
 }
+
 
 class Item {
     Double key;
@@ -45,7 +41,8 @@ class Item {
     }
 }
 
-class Solution {
+
+class Treap {
     long cnt(Item item) {
         if (item == null)
             return 0;
@@ -119,32 +116,6 @@ class Solution {
         return new Pair<>(merge(res[0], res[1]), ret);
     }
 
-    void printTreap(Item root) {
-        System.out.println("total num: " + cnt(root));
-        if (root == null)
-            return;
-        Queue<Item> q = new LinkedList<>();
-        q.add(root);
-        int blank = 1;
-        while (!q.isEmpty()) {
-            int size = q.size();
-            for (int i = 0; i < size; i++) {
-                Item node = q.poll();
-                System.out.print("<" + node.key + "," + node.priority + ">");
-                for (int j = 0; j < blank; j++) {
-                    System.out.print(" ");
-                }
-                if (node.left != null)
-                    q.add(node.left);
-                if (node.right != null)
-                    q.add(node.right);
-            }
-            System.out.println();
-            blank <<= 1;
-        }
-        System.out.println("------------------");
-    }
-
     public int reversePairs(int[] nums) {
         if (nums == null || nums.length == 0)
             return 0;
@@ -167,6 +138,7 @@ class Solution {
     }
 }
 
+
 public class p1e {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -174,7 +146,7 @@ public class p1e {
         int arr[] = new int[n];
         for (int i = 0; i < n; i++)
             arr[i] = sc.nextInt();
-        Solution sol = new Solution();
+        Treap sol = new Treap();
         System.out.println(sol.reversePairs(arr));
         sc.close();
     }
