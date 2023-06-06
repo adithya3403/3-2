@@ -19,36 +19,56 @@
 
 import java.util.*;
 
+class Trie {
+    Trie[] children;
+    boolean isEnd;
+
+    Trie() {
+        children = new Trie[26];
+        isEnd = false;
+    }
+
+    void insert(String word) {
+        Trie cur = this;
+        for (char c : word.toCharArray()) {
+            if (cur.children[c - 'a'] == null)
+                cur.children[c - 'a'] = new Trie();
+            cur = cur.children[c - 'a'];
+        }
+        cur.isEnd = true;
+    }
+}
+
+
 public class p1i {
-    public static int[][] indexPairs(String text, String[] words) {
-        List<int[]> indexPairsList = new ArrayList<int[]>();
-        for (String word : words) {
-            int wordLength = word.length();
-            int curIndex = 0;
-            while (curIndex >= 0) {
-                curIndex = text.indexOf(word, curIndex);
-                if (curIndex >= 0) {
-                    indexPairsList.add(new int[] {curIndex, curIndex + wordLength - 1});
-                    curIndex++;
+    public static List<List<Integer>> findIndexPairs(String text, String[] words) {
+        Trie root = new Trie();
+        for (String word : words)
+            root.insert(word);
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < text.length(); i++) {
+            Trie cur = root;
+            for (int j = i; j < text.length(); j++) {
+                cur = cur.children[text.charAt(j) - 'a'];
+                if (cur == null)
+                    break;
+                if (cur.isEnd) {
+                    List<Integer> pair = new ArrayList<>();
+                    pair.add(i);
+                    pair.add(j);
+                    res.add(pair);
                 }
             }
         }
-        int length = indexPairsList.size();
-        int[][] indexPairs = new int[length][2];
-        for (int i = 0; i < length; i++) {
-            int[] indexPair = indexPairsList.get(i);
-            indexPairs[i][0] = indexPair[0];
-            indexPairs[i][1] = indexPair[1];
-        }
-        return indexPairs;
+        return res;
     }
 
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         String text = sc.nextLine();
         String[] words = sc.nextLine().split(" ");
-        int[][] indexPairs = indexPairs(text, words);
-        System.out.println(Arrays.deepToString(indexPairs));
+        List<List<Integer>> indexpairs = findIndexPairs(text, words);
+        System.out.println(indexpairs);
         sc.close();
     }
 }
