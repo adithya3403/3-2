@@ -16,21 +16,22 @@
 // values will exist in the binary tree.
 
 import java.util.*;
+
 public class p1j {
     public static void main(String[] args) {
-        String[] elements= {"3","5","1","6","2","0","8","null","null","7","4"};
+        String[] elements = {"3", "5", "1", "6", "2", "0", "8", "null", "null", "7", "4"};
         TreeNode root = new TreeNode(elements[0]);
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        int i=1;
-        while(!queue.isEmpty() && i<elements.length){
+        int i = 1;
+        while (!queue.isEmpty() && i < elements.length) {
             TreeNode curr = queue.poll();
-            if(!elements[i].equals("null")){
+            if (!elements[i].equals("null")) {
                 curr.left = new TreeNode(elements[i]);
                 queue.add(curr.left);
             }
             i++;
-            if(!elements[i].equals("null")){
+            if (!elements[i].equals("null")) {
                 curr.right = new TreeNode(elements[i]);
                 queue.add(curr.right);
             }
@@ -43,21 +44,28 @@ public class p1j {
     }
 
     private static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if(root==null)
+        if (root == null)
             return null;
-        if(root.val.equals(p.val) || root.val.equals(q.val))
+        if (root.val.equals(p.val) || root.val.equals(q.val))
             return root;
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         TreeNode right = lowestCommonAncestor(root.right, p, q);
-        return (left!=null && right!=null)?root:(left!=null)?left:right;
+        return (left != null && right != null) ? root : (left != null) ? left : right;
     }
 }
+
+
 class TreeNode {
     String val;
     TreeNode left;
     TreeNode right;
+
     TreeNode() {}
-    TreeNode(String val) { this.val = val; }
+
+    TreeNode(String val) {
+        this.val = val;
+    }
+
     TreeNode(String val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
