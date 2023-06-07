@@ -16,138 +16,90 @@
 
 import java.util.*;
 
-class Pair<U, V> {
-    U left;
-    V right;
+public class p1e {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++)
+            arr[i] = sc.nextInt();
+        System.out.println(findNoOfRevPairs(arr));
+        sc.close();
+    }
 
-    Pair(U _left, V _right) {
-        left = _left;
-        right = _right;
+    static int findNoOfRevPairs(int[] arr) {
+        Treap treap = new Treap();
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            count += treap.query(arr[i] * 2 + 1, Integer.MAX_VALUE);
+            treap.insert(arr[i]);
+        }
+        return count;
     }
 }
 
 
-class Item {
-    Double key;
-    Double priority;
-    long cnt;
-    Item left, right;
+class Node {
+    int key, priority;
+    Node left, right;
 
-    Item() {
-        left = right = null;
-        key = null;
-        priority = null;
-        cnt = 1L;
+    Node(int key) {
+        this.key = key;
+        priority = new Random().nextInt();
     }
 }
 
 
 class Treap {
-    long cnt(Item item) {
-        if (item == null)
+    Node root = null;
+
+    void insert(int key) {
+        root = insert(root, key);
+    }
+
+    Node insert(Node root, int key) {
+        if (root == null)
+            return new Node(key);
+        if (key < root.key) {
+            root.left = insert(root.left, key);
+            if (root.left.priority > root.priority)
+                root = rightRotate(root);
+        } else {
+            root.right = insert(root.right, key);
+            if (root.right.priority > root.priority)
+                root = leftRotate(root);
+        }
+        return root;
+    }
+
+    private Node rightRotate(Node root2) {
+        Node left = root2.left;
+        Node right = left.right;
+        left.right = root2;
+        root2.left = right;
+        return left;
+    }
+
+    Node leftRotate(Node root2) {
+        Node right = root2.right;
+        Node left = right.left;
+        right.left = root2;
+        root2.right = left;
+        return right;
+    }
+
+    int query(int start, int end) {
+        return query(root, start, end);
+    }
+
+    int query(Node root, int start, int end) {
+        if (root == null)
             return 0;
-        return item.cnt;
-    }
-
-    void updateCnt(Item item) {
-        if (item != null)
-            item.cnt = 1 + cnt(item.left) + cnt(item.right);
-    }
-
-    Item[] split(Item item, double key) {
-        Item[] ret = null;
-        if (item == null) {
-            ret = new Item[] {null, null};
-        } else if (item.key < key) {
-            ret = split(item.right, key);
-            item.right = ret[0];
-            ret = new Item[] {item, ret[1]};
-        } else {
-            ret = split(item.left, key);
-            item.left = ret[1];
-            ret = new Item[] {ret[0], item};
-        }
-        updateCnt(item);
-        return ret;
-    }
-
-    Item merge(Item l, Item r) {
-        Item ret = null;
-        if (l == null || r == null)
-            ret = (l != null) ? l : r;
-        else if (l.priority > r.priority) {
-            l.right = merge(l.right, r);
-            ret = l;
-        } else {
-            r.left = merge(l, r.left);
-            ret = r;
-        }
-        updateCnt(ret);
-        return ret;
-    }
-
-    Item insert(Item root, Item item) {
-        Item ret = null;
-        if (root == null) {
-            ret = item;
-        } else if (root.priority < item.priority) {
-            Item[] res = split(root, item.key);
-            item.left = res[0];
-            item.right = res[1];
-            ret = item;
-        } else {
-            if (root.key > item.key) {
-                ret = insert(root.left, item);
-                root.left = ret;
-                ret = root;
-            } else {
-                ret = insert(root.right, item);
-                root.right = ret;
-                ret = root;
-            }
-        }
-        updateCnt(ret);
-        return ret;
-    }
-
-    Pair<Item, Long> searchNoGreaterThan(Item root, double key) {
-        Item[] res = split(root, key);
-        long ret = cnt(res[0]);
-        return new Pair<>(merge(res[0], res[1]), ret);
-    }
-
-    public int reversePairs(int[] nums) {
-        if (nums == null || nums.length == 0)
-            return 0;
-        int LEN = nums.length;
-        Random rand = new Random();
-        Item root = new Item();
-        root.priority = rand.nextDouble();
-        root.key = nums[LEN - 1] + 0.0;
-        int ans = 0;
-        for (int i = LEN - 2; i >= 0; i--) {
-            Pair<Item, Long> ret = searchNoGreaterThan(root, (nums[i] + 0.0) / 2);
-            ans += ret.right;
-            root = ret.left;
-            Item e = new Item();
-            e.priority = rand.nextDouble();
-            e.key = nums[i] + 0.0;
-            root = insert(root, e);
-        }
-        return ans;
-    }
-}
-
-
-public class p1e {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int arr[] = new int[n];
-        for (int i = 0; i < n; i++)
-            arr[i] = sc.nextInt();
-        Treap sol = new Treap();
-        System.out.println(sol.reversePairs(arr));
-        sc.close();
+        if (root.key >= start && root.key <= end)
+            return 1 + query(root.left, start, end) + query(root.right, start, end);
+        else if (root.key < start)
+            return query(root.right, start, end);
+        else
+            return query(root.left, start, end);
     }
 }
