@@ -30,102 +30,54 @@
 
 
 import java.util.*;
-import java.io.*;
-
-class SegmentTreeNode {
-    int start, end;
-    SegmentTreeNode left, right;
-    int val;
-
-    public SegmentTreeNode(int start, int end) {
-        this.start = start;
-        this.end = end;
-        left = null;
-        right = null;
-        val = 0;
-    }
-}
-
 
 class SegmentTree {
-    SegmentTreeNode root;
+    int[] tree;
 
-    public int maxEvents(int[][] events) {
-        if (events == null || events.length == 0)
-            return 0;
-        Arrays.sort(events, (a, b) -> {
-            if (a[1] == b[1])
-                return a[0] - b[0];
-            return a[1] - b[1];
-        });
-        int lastDay = events[events.length - 1][1];
-        int firstDay = Integer.MAX_VALUE;
-        for (int i = 0; i < events.length; i++) {
-            firstDay = Math.min(firstDay, events[i][0]);
-        }
-        root = buildSegmentTree(firstDay, lastDay);
+    SegmentTree(int[][] arr) {
+        int max = 0;
+        for (int i = 0; i < arr.length; i++)
+            max = Math.max(max, arr[i][1]);
+        tree = new int[max + 1];
+        for (int i = 0; i < arr.length; i++)
+            update(arr[i][0], arr[i][1]);
+    }
+
+    void update(int start, int end) {
+        for (int i = start; i <= end; i++)
+            tree[i] = 1;
+    }
+
+    int query(int start, int end) {
         int count = 0;
-        for (int[] event : events) {
-            int earliestDay = query(root, event[0], event[1]);
-            if (earliestDay != Integer.MAX_VALUE) {
+        for (int i = start; i <= end; i++)
+            if (tree[i] == 1)
                 count++;
-                update(root, earliestDay);
-            }
-        }
         return count;
-    }
-
-    private SegmentTreeNode buildSegmentTree(int start, int end) {
-        if (start > end)
-            return null;
-        SegmentTreeNode node = new SegmentTreeNode(start, end);
-        node.val = start;
-        if (start != end) {
-            int mid = start + (end - start) / 2;
-            node.left = buildSegmentTree(start, mid);
-            node.right = buildSegmentTree(mid + 1, end);
-        }
-        return node;
-    }
-
-    private void update(SegmentTreeNode curr, int lastDay) {
-        if (curr.start == curr.end) {
-            curr.val = Integer.MAX_VALUE;
-        } else {
-            int mid = curr.start + (curr.end - curr.start) / 2;
-            if (mid >= lastDay)
-                update(curr.left, lastDay);
-            else
-                update(curr.right, lastDay);
-            curr.val = Math.min(curr.left.val, curr.right.val);
-        }
-    }
-
-    private int query(SegmentTreeNode curr, int left, int right) {
-        if (curr.start == left && curr.end == right)
-            return curr.val;
-        int mid = curr.start + (curr.end - curr.start) / 2;
-        if (mid >= right)
-            return query(curr.left, left, right);
-        else if (mid < left)
-            return query(curr.right, left, right);
-        else
-            return Math.min(query(curr.left, left, mid), query(curr.right, mid + 1, right));
     }
 }
 
 
 public class p1d {
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int nums[][] = new int[n][2];
+        int[][] arr = new int[n][2];
         for (int i = 0; i < n; i++) {
-            nums[i][0] = sc.nextInt();
-            nums[i][1] = sc.nextInt();
+            arr[i][0] = sc.nextInt();
+            arr[i][1] = sc.nextInt();
         }
-        SegmentTree tree = new SegmentTree();
-        System.out.println(tree.maxEvents(nums));
+        System.out.println(maxPrograms(arr));
         sc.close();
+    }
+
+    static int maxPrograms(int[][] arr) {
+        SegmentTree tree = new SegmentTree(arr);
+        int max = 0;
+        for (int i = 0; i < arr.length; i++) {
+            int query = tree.query(arr[i][0], arr[i][1]);
+            max = Math.max(max, query);
+        }
+        return max;
     }
 }
