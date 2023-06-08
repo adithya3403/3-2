@@ -7,7 +7,7 @@
 
 import java.util.*;
 
-class Graph {
+class AP {
     static int time;
 
     void addEdge(List<List<Integer>> adj, int u, int v) {
@@ -58,13 +58,13 @@ public class p1g {
         List<List<Integer>> adj1 = new ArrayList<>(V);
         for (int i = 0; i < V; i++)
             adj1.add(new ArrayList<>());
-        Graph graph = new Graph();
-        graph.addEdge(adj1, 1, 0);
-        graph.addEdge(adj1, 0, 2);
-        graph.addEdge(adj1, 2, 1);
-        graph.addEdge(adj1, 0, 3);
-        graph.addEdge(adj1, 3, 4);
-        graph.AP(adj1, V);
+        AP g = new AP();
+        g.addEdge(adj1, 1, 0);
+        g.addEdge(adj1, 0, 2);
+        g.addEdge(adj1, 2, 1);
+        g.addEdge(adj1, 0, 3);
+        g.addEdge(adj1, 3, 4);
+        g.AP(adj1, V);
     }
 }
 
