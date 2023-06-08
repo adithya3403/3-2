@@ -7,7 +7,7 @@
 
 import java.util.*;
 
-class AP {
+class Sol {
     static int time;
 
     void addEdge(List<List<Integer>> adj, int u, int v) {
@@ -58,7 +58,7 @@ public class p1g {
         List<List<Integer>> adj1 = new ArrayList<>(V);
         for (int i = 0; i < V; i++)
             adj1.add(new ArrayList<>());
-        AP g = new AP();
+        Sol g = new Sol();
         g.addEdge(adj1, 1, 0);
         g.addEdge(adj1, 0, 2);
         g.addEdge(adj1, 2, 1);
